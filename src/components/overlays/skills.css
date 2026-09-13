@@ -1,0 +1,266 @@
+.sk {
+  position: relative;
+  width: min(28vw, 360px);
+  height: min(66vh, 500px);
+  overflow: visible;
+  --sk-flat-x: 106%;
+  --sk-flat-y: 0%;
+  --sk-flat-r: 0.8deg;
+}
+
+/* 只有真正放不下三列的手机才改成纵向平铺；842px 的常见预览宽度仍保持三列。 */
+@media (max-width: 640px) {
+  .sk {
+    width: min(84vw, 360px);
+    height: min(56vh, 420px);
+    --sk-flat-x: 0%;
+    --sk-flat-y: 62%;
+    --sk-flat-r: 0.7deg;
+  }
+}
+
+.sk[data-flat] .sk__card {
+  transform-origin: 50% 50%;
+  transition:
+    translate 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out),
+    filter 240ms var(--ease-out);
+  box-shadow:
+    0 14px 30px rgba(30, 44, 70, 0.16),
+    0 2px 4px rgba(30, 44, 70, 0.08);
+}
+
+.sk[data-flat] .sk__card[data-slot='0'] {
+  transform:
+    translate(calc(0% - var(--sk-flat-x)), calc(0% - var(--sk-flat-y)))
+    rotate(calc(0deg - var(--sk-flat-r)));
+}
+
+.sk[data-flat] .sk__card[data-slot='1'] {
+  transform: translate(0, 0);
+}
+
+.sk[data-flat] .sk__card[data-slot='2'] {
+  transform: translate(var(--sk-flat-x), var(--sk-flat-y)) rotate(var(--sk-flat-r));
+}
+
+.sk[data-flat] .sk__card:hover,
+.sk[data-flat] .sk__card:focus-visible,
+.sk[data-flat] .sk__card[data-selected] {
+  translate: 0 -8px;
+  filter: saturate(1.04) brightness(1.025);
+  box-shadow:
+    0 22px 42px rgba(30, 44, 70, 0.2),
+    0 3px 6px rgba(30, 44, 70, 0.1);
+}
+
+/* 只给屏幕阅读器的说明与状态播报 */
+.sk__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.sk__card {
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  padding: clamp(20px, 3vw, 34px) clamp(20px, 3.2vw, 36px) clamp(18px, 2.6vw, 30px);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow: hidden;
+  transform-origin: 50% 50%;
+  box-shadow:
+    0 20px 44px rgba(30, 44, 70, 0.17),
+    0 2px 5px rgba(30, 44, 70, 0.08);
+  animation: skIn 0.7s var(--ease-out) backwards var(--in-delay, 0s);
+  will-change: transform, translate;
+}
+
+@keyframes skIn {
+  from {
+    opacity: 0;
+    transform: translateY(52px) scale(0.9);
+  }
+}
+
+/* 右上角细圆弧装饰 */
+.sk__arc {
+  position: absolute;
+  right: -22%;
+  top: -14%;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.sk__kicker {
+  font-size: clamp(7.6px, 0.9vw, 10px);
+  letter-spacing: 0.24em;
+  opacity: 0.72;
+  text-transform: uppercase;
+}
+
+.sk__title {
+  margin-top: clamp(10px, 1.6vw, 20px);
+  /* 参考是超粗黑体，不是宋体 */
+  font-family: var(--font-cn);
+  font-weight: 900;
+  font-size: clamp(38px, 6.2vw, 64px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+
+.sk__desc {
+  margin-top: clamp(4px, 0.5vw, 7px);
+  font-family: var(--font-cn);
+  font-weight: 500;
+  font-size: clamp(11px, 1.15vw, 13px);
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.sk__spacer {
+  flex: 1;
+  min-height: 14px;
+}
+
+.sk__rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.sk__row {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  align-items: baseline;
+  gap: 8px;
+  padding: clamp(7px, 1vw, 10px) 0 clamp(5px, 0.7vw, 7px);
+  border-top: 1px solid currentColor;
+}
+
+.sk__row:first-child {
+  border-top-color: currentColor;
+}
+
+.sk__k {
+  font-size: clamp(7.4px, 0.86vw, 9.6px);
+  letter-spacing: 0.16em;
+  opacity: 0.62;
+  text-transform: uppercase;
+}
+
+.sk__v {
+  font-family: var(--font-cn);
+  font-size: clamp(11px, 1.16vw, 13.4px);
+  font-weight: 500;
+}
+
+.sk__project-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid currentColor;
+  font: 700 clamp(11px, 1.15vw, 14px)/1.4 var(--font-cn);
+}
+
+.sk__project-entry > span { font: 24px/1 sans-serif; }
+
+@media (min-width: 641px) and (max-height: 680px) {
+  .ov--skills { overflow-y: auto; place-items: safe center; }
+  .ov--skills .sk { height: 500px; margin-block: 76px; }
+}
+
+/* Keep every project entry reachable on narrow screens, without overlapping cards. */
+@media (max-width: 640px) {
+  .ov--skills { overflow-y: auto; display: block; }
+  .ov--skills .sk {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: auto;
+    margin: 85px auto 40px;
+  }
+  .sk[data-flat] .sk__card[data-slot] {
+    position: relative;
+    inset: auto;
+    min-height: 400px;
+    transform: none;
+    translate: none;
+  }
+}
+
+/* ── 逐条批注微调：01 / FILM & TV POSTER DESIGN ───── */
+.sk__card[data-card='01'],
+.sk__card[data-card='02'] {
+  border-radius: 17px;
+}
+
+.sk__card[data-card='01'] .sk__title {
+  margin: 11.47px -11px 4px;
+  padding-bottom: 11px;
+  font-size: clamp(38px, 5.96vw, 50.2px);
+}
+
+.sk__card[data-card='01'] .sk__desc {
+  margin-right: -5px;
+  margin-left: -8px;
+  padding-left: 2px;
+}
+
+.sk__card[data-card='01'] .sk__rows {
+  transform: translateY(-14px);
+}
+
+.sk__card[data-card='01'] .sk__row:nth-child(2) {
+  margin-right: -19px;
+  margin-left: -13px;
+  padding-top: 2px;
+}
+
+.sk__card[data-card='01'] .sk__row:nth-child(3) .sk__v {
+  margin-top: 5px;
+  margin-left: -11px;
+}
+
+/* ── 02 / GAME VISUAL ──────────────────────────────── */
+.sk__card[data-card='02'] .sk__title {
+  margin: clamp(10px, 1.6vw, 20px) -14px 8px -6px;
+  padding-bottom: 8px;
+  font-size: clamp(38px, 5.96vw, 50.2px);
+}
+
+.sk__card[data-card='02'] .sk__row:nth-child(2) .sk__v {
+  margin-right: -3px;
+  margin-left: -8px;
+}
+
+.sk__card[data-card='02'] .sk__row:nth-child(3) .sk__v {
+  margin-right: -3px;
+  margin-left: -9px;
+}
+
+/* ── 03 / AIGC WORKFLOW ────────────────────────────── */
+.sk__card[data-card='03'] .sk__row:nth-child(1) .sk__v {
+  margin-right: -2px;
+  margin-left: -6px;
+}
+
+.sk__card[data-card='03'] .sk__row:nth-child(3) .sk__v {
+  margin-right: 1px;
+  margin-left: -13px;
+}

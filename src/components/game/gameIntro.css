@@ -1,0 +1,73 @@
+/* Scoped to Start / Character Select. All other Demo screens keep their existing CSS. */
+.fg-stage--intro { overflow:hidden; background:#302b21; }
+.fg-intro-layer,.fg-start-screen,.fg-start-art { position:absolute; inset:0; width:100%; height:100%; }
+.fg-intro-layer { z-index:1; }
+.fg-start-art { display:block; pointer-events:none; }
+.fg-start-background { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.fg-start-title { position:absolute; left:38.85%; top:12.13%; width:28.54%; height:63.61%; }
+.fg-start-title img { display:block; width:100%; height:100%; object-fit:contain; }
+.fg-start-ground { animation:fg-ground-in .5s ease-out both; }
+.fg-start-scroll { transform-origin:50% 45%; animation:fg-scroll-in .5s .16s cubic-bezier(.22,.65,.3,1) both; }
+.fg-start-ink { animation:fg-ink-in .6s .3s ease-out both; }
+.fg-start-actions { position:absolute; inset:0; animation:fg-ui-in .34s .62s ease-out both; pointer-events:none; }
+.fg-shell .fg-start-enter { position:absolute; left:39.06%; top:75.19%; width:21.36%; height:11.76%; border:0; background:none; padding:0; pointer-events:auto; transition:transform .22s ease; transform-origin:center; }
+.fg-start-enter svg { display:block; width:100%; height:100%; pointer-events:none; }
+.fg-start-enter img { display:block; width:100%; height:100%; object-fit:contain; pointer-events:none; }
+.fg-shell .fg-start-enter:hover { transform:translateY(-2px) scale(1.03); }
+.fg-shell .fg-start-enter:active { transform:scale(.96); transition-duration:.1s; }
+.fg-start-agreement { position:absolute; left:34%; right:32%; top:88%; height:5%; display:flex; justify-content:center; align-items:center; gap:.7cqw; pointer-events:auto; color:#4e321e; }
+.fg-shell .fg-start-agreement button { padding:0; color:#50351f; font-size:1.13cqw; white-space:nowrap; background:transparent; border:0; }
+.fg-start-agreement button:last-child { text-decoration:underline; text-underline-offset:.2em; color:#883720; }
+.fg-start-agreement span { color:#8e3824; font-size:1.65cqw; vertical-align:middle; }
+.fg-intro-clouds { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; fill:#f0e3c2; opacity:.25; overflow:visible; }
+.fg-cloud--one { animation:fg-cloud-drift 14s ease-in-out infinite alternate; }
+.fg-cloud--two { animation:fg-cloud-drift 18s -6s ease-in-out infinite alternate-reverse; }
+.fg-shell .fg-intro-close { position:absolute; top:3.6%; right:3%; z-index:4; display:grid; place-items:center; width:clamp(28px,3.8cqw,46px); aspect-ratio:1; border:1px solid #a86137; border-radius:50%; padding:0; background:#ecdbb2; color:#913d28; font:clamp(20px,2.8cqw,32px)/1 Georgia,serif; box-shadow:inset 0 0 0 3px #e2c58a,0 2px 5px #33271820; transition:transform .2s ease,background .2s; }
+.fg-shell .fg-intro-close:hover { transform:scale(1.05) rotate(3deg); background:#f7e7c1; }
+.fg-shell .fg-intro-close:active { transform:scale(.96); }
+.fg-start-close { animation:fg-ui-in .35s .65s both; }
+
+/* No UI-22, no second paper image. One quiet landscape and one continuous paper surface. */
+.fg-character-atmosphere { position:absolute; inset:-2%; width:104%; height:104%; object-fit:cover; filter:blur(6px) brightness(.62) saturate(.65); pointer-events:none; animation:fg-atmosphere-back .85s ease-out both; }
+.fg-character-screen::after { content:''; position:absolute; inset:0; background:#342b2024; pointer-events:none; }
+.fg-character-screen .fg-character-panel { z-index:2; inset:4% 10%; padding:3cqw 4cqw 2.2cqw; display:grid; grid-template-rows:auto minmax(0,1fr) auto; justify-items:center; gap:1cqw; border:1px solid #b4996a; background:#e9d9b8 url('/assets/fusheng/paper.webp') center/cover; box-shadow:0 .8cqw 2.5cqw #201a1540,inset 0 0 3cqw #b99d6824; border-radius:2px; animation:fg-panel-in .65s .1s cubic-bezier(.22,.65,.3,1) both; }
+.fg-character-panel>header { text-align:center; animation:fg-ui-in .4s .22s ease-out both; }
+.fg-character-panel h1 { margin:0 0 .4cqw; font-size:2.5cqw; font-weight:400; color:#793d25; letter-spacing:.28cqw; line-height:1.4; }
+.fg-character-panel header p { margin:0; font-size:1.15cqw; color:#806745; line-height:1.6; }
+.fg-character-panel .fg-choose-cards { display:flex; width:100%; min-height:0; height:100%; margin:0; gap:4.5cqw; justify-content:center; }
+.fg-character-reveal { height:100%; min-height:0; width:21cqw; animation:fg-ui-in .45s var(--character-delay) ease-out both; }
+.fg-shell .fg-character-reveal>button { position:relative; display:grid; grid-template-rows:minmax(0,1fr) auto; width:100%; height:100%; padding:.35cqw; border:1px solid #ad956e; background:#dfcdab; opacity:.72; color:#704427; transition:transform .24s ease,opacity .24s ease,border-color .24s ease,box-shadow .24s ease; }
+.fg-character-reveal img { display:block; width:100%; height:100%; object-fit:contain; padding:0; }
+.fg-character-reveal span { display:block; text-align:center; padding:.4cqw 0 .15cqw; font-size:1.7cqw; line-height:1.3; }
+.fg-character-reveal small { display:block; margin-top:.1cqw; font-size:1cqw; letter-spacing:.08cqw; }
+.fg-shell .fg-character-reveal>button:hover { opacity:1; transform:translateY(-4px) scale(1.02); }
+.fg-shell .fg-character-reveal>button[aria-pressed=true] { opacity:1; border-color:#a4422b; box-shadow:0 0 0 .15cqw #a4422b,inset 0 0 0 .3cqw #ebd39e; background:#ead7ac; }
+.fg-character-panel>footer { display:flex; flex-direction:column; align-items:center; gap:.5cqw; animation:fg-ui-in .35s .55s ease-out both; }
+.fg-shell .fg-character-panel .fg-red-button { padding:.55cqw 3.4cqw; border:1px solid #ba9154; outline:1px solid #8d3823; background:#993d28; color:#f6e8c7; min-height:3.1cqw; font-size:1.4cqw!important; transition:transform .2s ease,background .2s; }
+.fg-shell .fg-character-panel .fg-red-button:hover { background:#aa4930; transform:translateY(-2px); }
+.fg-shell .fg-character-panel .fg-red-button:active { transform:scale(.97); }
+.fg-shell .fg-character-panel .fg-cancel { margin:0; padding:.2cqw 1.5cqw; font-size:1.1cqw!important; color:#805b3a; }
+.fg-intro-transition>.fg-intro-layer:not(.fg-intro-outgoing) { animation:fg-incoming .9s ease-out both; }
+.fg-intro-outgoing { z-index:3; pointer-events:none; animation:fg-outgoing .62s ease-in both; }
+.fg-intro-outgoing .fg-start-ground,.fg-intro-outgoing .fg-start-scroll,.fg-intro-outgoing .fg-start-ink,.fg-intro-outgoing .fg-start-actions,.fg-intro-outgoing .fg-start-close { animation:none; }
+.fg-intro-outgoing .fg-start-art { transform-origin:50% 45%; animation:fg-scroll-approach .62s ease-in both; }
+.fg-intro-outgoing .fg-start-enter { animation:fg-enter-press .25s ease-out both; }
+.fg-intro-veil { position:absolute; inset:0; z-index:4; pointer-events:none; background:#201b17; animation:fg-veil .9s ease-in-out both; }
+.fg-intro-clouds--sweep { opacity:.8; transform:scale(1.7); }
+.fg-intro-clouds--sweep .fg-cloud { animation:fg-cloud-sweep .9s ease-in-out both; }
+@keyframes fg-ground-in { from{opacity:0} to{opacity:1} }
+@keyframes fg-scroll-in { from{opacity:0;transform:scaleY(.94)} to{opacity:1;transform:scaleY(1)} }
+@keyframes fg-ink-in { from{opacity:0;clip-path:inset(0 0 100% 0);filter:blur(3px)} to{opacity:1;clip-path:inset(0);filter:blur(0)} }
+@keyframes fg-ui-in { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fg-cloud-drift { from{transform:translate(-12px,3px)} to{transform:translate(18px,-5px)} }
+@keyframes fg-atmosphere-back { from{transform:scale(1.03);opacity:.8} to{transform:scale(1);opacity:1} }
+@keyframes fg-panel-in { from{opacity:0;transform:scaleX(.95) translateY(6px)} to{opacity:1;transform:scaleX(1) translateY(0)} }
+@keyframes fg-outgoing { 0%,18%{opacity:1} 100%{opacity:0} }
+@keyframes fg-incoming { 0%,22%{opacity:0} 70%,100%{opacity:1} }
+@keyframes fg-scroll-approach { to{transform:scale(1.035);filter:brightness(.78)} }
+@keyframes fg-enter-press { 40%{transform:scale(.96)} 100%{transform:scale(.98)} }
+@keyframes fg-veil { 0%{opacity:0} 42%{opacity:.28} 100%{opacity:0} }
+@keyframes fg-cloud-sweep { from{transform:translateX(-260px)} to{transform:translateX(440px)} }
+@media(prefers-reduced-motion:reduce) {
+  .fg-stage--intro * { animation:none!important; transition:none!important; }
+}

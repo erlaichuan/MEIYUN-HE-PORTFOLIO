@@ -1,0 +1,3 @@
+/* The painter's landscape scroll flows behind the left information panels. */
+.painter-detail .lh-portrait { z-index:1; }
+.painter-detail .lh-attributes,.painter-detail .lh-content { z-index:2; }

@@ -1,0 +1,3 @@
+/* The hanging silk extends behind the information cards in the reference. */
+.sw-detail .lh-portrait { z-index:1; }
+.sw-detail .lh-attributes,.sw-detail .lh-content { z-index:2; }

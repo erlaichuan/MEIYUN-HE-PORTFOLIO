@@ -1,0 +1,20 @@
+/* Only the HOME check-in dialog. The original illustration remains unedited. */
+.fg-checkin-shade { position:absolute; inset:0; z-index:6; background:#29201460; backdrop-filter:blur(5px); }
+.fg-checkin-scroll { position:absolute; inset:0; overflow:hidden; animation:fc-open .42s cubic-bezier(.22,.65,.3,1) both; }
+.fc-artboard { position:absolute; left:-2.708333%; top:5.740741%; width:102.291667%; height:91.666667%; pointer-events:none; }
+.fc-scroll-art { display:block; width:100%; height:100%; }
+.fc-reward-art { position:absolute; margin:0; }
+.fc-reward-art img { display:block; width:100%; height:100%; object-fit:contain; }
+.fg-shell .fc-close { position:absolute; right:3.125%; top:13.24%; width:4.166667%; height:7.407407%; padding:0; border:0; border-radius:50%; background:transparent; cursor:pointer; transition:transform .2s ease,box-shadow .2s ease; }
+.fc-close>svg { display:block; width:100%; height:100%; clip-path:circle(45% at 49% 50%); pointer-events:none; }
+.fg-shell .fc-close:hover { transform:scale(1.04) rotate(3deg); box-shadow:0 0 0 1px #e9cb78; }
+.fg-shell .fc-close:active { transform:scale(.96); }
+.fc-current-day { position:absolute; left:37%; top:74.5%; width:35%; display:flex; flex-direction:column; align-items:center; gap:.35cqw; color:#815328; }
+.fc-current-day p { margin:0; font-size:1.2cqw; line-height:1.5; letter-spacing:.1cqw; }
+.fg-shell .fc-claim { position:relative; padding:.5cqw 2.1cqw; background:#a4452b; color:#fae3b0; border:3px double #d5ac62; border-radius:2px; font:inherit; font-size:1.45cqw; line-height:1.3; letter-spacing:.15cqw; transition:transform .2s ease,background-color .2s ease; }
+.fg-shell .fc-claim:hover:not(:disabled) { background:#b54e31; transform:translateY(-2px) scale(1.03); }
+.fg-shell .fc-claim:active:not(:disabled) { transform:scale(.96); }
+.fg-shell .fc-claim:disabled { background:#917448; color:#f0dfbb; cursor:default; }
+.fc-current-day small { font-size:.8cqw; line-height:1.4; color:#8c754f; }
+@keyframes fc-open { from { opacity:0; transform:scale(.96); } to { opacity:1; transform:scale(1); } }
+@media(prefers-reduced-motion:reduce) { .fg-checkin-scroll,.fg-checkin-scroll * { animation:none!important; transition:none!important; } }

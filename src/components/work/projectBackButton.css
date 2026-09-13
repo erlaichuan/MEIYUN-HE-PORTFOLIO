@@ -1,0 +1,100 @@
+/* Pill Nav-inspired silhouette and rising circular fill, tailored to the portfolio. */
+.project-back.project-back {
+  --return-bg: #f5f1e7;
+  --return-ink: #292d28;
+  --return-accent: #303b31;
+  --return-contrast: #fff8eb;
+  --return-border: #8d9685;
+  position: fixed;
+  top: max(18px, env(safe-area-inset-top));
+  left: max(24px, env(safe-area-inset-left));
+  z-index: 180;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  min-height: 52px;
+  padding: 6px 21px 6px 6px;
+  border: 1px solid var(--return-border);
+  border-radius: 999px;
+  background: var(--return-bg);
+  color: var(--return-ink);
+  box-shadow: 0 5px 20px #0003, inset 0 1px 0 #ffffff18;
+  font: 600 15px/1.4 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  letter-spacing: .045em;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.project-back[data-placement='local'] { position: absolute; }
+.project-back[data-placement='inline'] { position: relative; inset: auto; flex-shrink: 0; }
+.project-back__wash {
+  position: absolute;
+  z-index: -1;
+  width: 220px;
+  height: 220px;
+  left: 50%;
+  bottom: -160px;
+  border-radius: 50%;
+  background: var(--return-accent);
+  transform: translateX(-50%) scale(0);
+  transform-origin: 50% 100%;
+  transition: transform .38s cubic-bezier(.22, 1, .36, 1);
+  pointer-events: none;
+}
+.project-back__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--return-contrast);
+  background: var(--return-accent);
+}
+.project-back__icon svg { width: 21px; height: 21px; transition: transform .3s ease; }
+.project-back__labels { position: relative; display: block; overflow: hidden; }
+.project-back__label, .project-back__label-hover { display: block; transition: transform .32s cubic-bezier(.22, 1, .36, 1); }
+.project-back__label-hover { position: absolute; inset: 0; transform: translateY(120%); color: var(--return-contrast); }
+.project-back:is(:hover, :focus-visible) .project-back__wash { transform: translateX(-50%) scale(1.7); }
+.project-back:is(:hover, :focus-visible) .project-back__label { transform: translateY(-120%); }
+.project-back:is(:hover, :focus-visible) .project-back__label-hover { transform: translateY(0); }
+.project-back:is(:hover, :focus-visible) .project-back__icon svg { transform: translateX(-2px); }
+.project-back[data-direction='down']:is(:hover, :focus-visible) .project-back__icon svg { transform: translateY(2px); }
+.project-back.project-back:focus-visible { outline: 3px solid var(--return-accent); outline-offset: 4px; }
+.project-back.project-back:active { transform: scale(.97); }
+
+.dv .project-back, .ld .project-back, .aigcm-view .project-back {
+  --return-bg: #1b150e;
+  --return-ink: #f3d9ad;
+  --return-accent: #dfba7c;
+  --return-contrast: #20170c;
+  --return-border: #b99760;
+}
+.gp .project-back {
+  --return-bg: #f2e5ce;
+  --return-ink: #304533;
+  --return-accent: #304533;
+  --return-contrast: #fff1d9;
+  --return-border: #7d896a;
+}
+/* A nested preview exposes its own return action, never the folder-level action. */
+.dv:has(.mb__focus) > .project-back,
+.aigcm-view:has(.aigcm__focus) > .project-back { visibility: hidden; }
+
+@media (max-width: 700px) {
+  .project-back.project-back { top: max(12px, env(safe-area-inset-top)); left: max(14px, env(safe-area-inset-left)); min-height: 46px; padding: 5px 16px 5px 5px; gap: 9px; font-size: 14px; }
+  .project-back__icon { width: 34px; height: 34px; flex-basis: 34px; }
+  .project-back[data-placement='inline'] { inset: auto; }
+  .wsc .wsc__head { margin-top: 78px; }
+}
+@media (max-height: 520px) and (min-width: 701px) {
+  .ld.wv { padding-top: 76px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-back.project-back, .project-back * { transition: none; }
+}

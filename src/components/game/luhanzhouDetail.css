@@ -1,0 +1,22 @@
+.lh-detail { position:absolute; inset:0; overflow:hidden; isolation:isolate; }
+.lh-background { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.lh-art { position:absolute; display:block; object-fit:contain; pointer-events:none; user-select:none; }
+.lh-portrait { z-index:2; }
+.lh-attributes { position:absolute; inset:0; }
+.fg-shell .lh-back,.fg-shell .lh-home,.fg-shell .lh-tab { position:absolute; padding:0; border:0; background:transparent; z-index:4; }
+.lh-back>svg,.lh-home>img { display:block; width:100%; height:100%; pointer-events:none; transition:filter .2s ease,transform .2s ease; }
+.lh-back:hover>svg,.lh-home:hover>img { filter:brightness(1.1); transform:scale(1.035); }
+.lh-tabs { position:absolute; inset:0; z-index:3; pointer-events:none; }
+.fg-shell .lh-tab { pointer-events:auto; transform:translateY(0); transition:transform .4s cubic-bezier(.22,.65,.3,1); }
+.fg-shell .lh-tab.is-selected { transform:translateY(28.26087%); }
+.lh-tab>img { position:absolute; display:block; max-width:none; pointer-events:none; user-select:none; transition:filter .2s ease; }
+.lh-tab:hover>img { filter:brightness(1.08); }
+.lh-content { position:absolute; z-index:1; left:3%; top:38%; width:56%; height:51%; overflow:auto; overscroll-behavior:contain; background:#e7d6b7 url('/assets/fusheng/ui/paper.png') center/145% 145% no-repeat; border:.3cqw double #a28559; border-radius:1.4cqw; color:#765332; padding:1.8cqw 2cqw; }
+.lh-content h2 { font-size:2cqw; font-weight:400; color:#944f23; margin:0 0 1.5cqw; }
+.lh-content h3 { font-size:1.45cqw; font-weight:400; color:#a15022; margin:.7cqw 0; }
+.lh-content p { font-size:1.4cqw; line-height:1.9; margin:.5cqw 0; }
+.lh-content--unavailable { display:grid; place-items:center; }
+.lh-content--unavailable h2 { margin:0; font-size:2.8cqw; letter-spacing:.18em; }
+.fg-guide .lh-tab,.fg-guide .lh-back,.fg-guide .lh-home { outline:1px dashed #ffe5a2; outline-offset:3px; }
+.lh-stat-cover { transform-box:fill-box; transform-origin:right center; transform:scaleX(0); }
+@media(prefers-reduced-motion:reduce) { .lh-detail,.lh-detail * { animation:none!important; transition:none!important; } }

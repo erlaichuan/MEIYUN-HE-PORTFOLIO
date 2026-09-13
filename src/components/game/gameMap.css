@@ -1,0 +1,53 @@
+.fm-map { position:absolute; inset:0; overflow:hidden; isolation:isolate; --fm-ease:cubic-bezier(.22,1,.36,1); }
+.fm-background { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; filter:blur(5px) brightness(.92); pointer-events:none; animation:fm-background-in 300ms ease-out both; }
+.fm-shade { position:absolute; inset:0; background:rgba(43,33,17,.34); pointer-events:none; animation:fm-shade-in 300ms ease-out both; }
+.fm-scroll,.fm-cloud,.fm-title { position:absolute; object-fit:contain; pointer-events:none; user-select:none; }
+.fm-scroll { z-index:1; transform-origin:12% 50%; animation:fm-unroll 800ms 100ms var(--fm-ease) both; }
+.fm-paper-wash { opacity:0; animation:fm-paper-clear 400ms 500ms ease-out backwards; }
+.fm-landscape { animation:fm-landscape-in 400ms 500ms ease-out both; }
+.fm-landscape-layer { visibility:hidden; animation:fm-landscape-layer 900ms step-end both; }
+.fm-cloud { z-index:2; opacity:.7; }
+.fm-cloud-reveal,.fm-cloud-counter,.fm-cloud-art { width:100%; height:100%; }
+.fm-cloud-reveal { overflow:hidden; animation:fm-cloud-in 1600ms 600ms cubic-bezier(.25,.1,.25,1) both; }
+.fm-cloud-counter { animation:fm-cloud-counter 1600ms 600ms cubic-bezier(.25,.1,.25,1) both; }
+.fm-cloud-art { display:block; object-fit:contain; animation:fm-cloud-drift 12s 2200ms ease-in-out infinite; }
+.fm-title { z-index:3; transform-origin:center top; animation:fm-title-in 400ms 650ms var(--fm-ease) both; }
+.fg-shell .fm-marker,.fg-shell .fm-close { position:absolute; z-index:4; padding:0; border:0; background:transparent; border-radius:0; }
+.fm-marker { transform-origin:center 40%; animation:fm-marker-in 320ms var(--marker-delay) var(--fm-ease) both; }
+.fm-marker-float { position:absolute; inset:0; display:block; animation:fm-marker-idle 5s var(--idle-delay) ease-in-out infinite; }
+.fm-marker-float>svg { position:absolute; inset:0 auto auto 0; display:block; width:100%; height:168.5083%; overflow:visible; pointer-events:none; transform-origin:50% 28%; transition:filter .2s ease,transform .18s ease; }
+.fm-marker-line { animation:fm-line-in 300ms var(--marker-delay) ease-out both; }
+.fm-marker:hover .fm-marker-float,.fm-marker:focus-visible .fm-marker-float { animation-play-state:paused; }
+.fm-marker:not(:disabled):hover .fm-marker-float>svg,.fm-marker:focus-visible .fm-marker-float>svg { filter:brightness(1.07); transform:scale(1.06); }
+.fm-marker:not(:disabled):active .fm-marker-float>svg { transform:scale(.94); }
+.fm-marker.is-pending .fm-marker-float>svg { filter:grayscale(1); }
+.fm-pending-label { fill:#f3ebda; font-family:'STKaiti','Kaiti SC','KaiTi',serif; font-size:28px; }
+.fm-close>svg { width:100%; height:100%; display:block; clip-path:ellipse(46% 46% at 48% 49%); pointer-events:none; transition:transform .2s ease,filter .2s ease; }
+.fm-close:hover>svg { transform:rotate(6deg) scale(1.05); filter:brightness(1.08); }
+.fm-marker-caption { position:absolute; top:-2.3cqw; left:50%; transform:translateX(-50%); white-space:nowrap; padding:.25cqw .7cqw; background:#624821ed; border:1px solid #d8b267; color:#fff0cb; font-size:1.05cqw; opacity:0; pointer-events:none; transition:opacity .2s ease; }
+.fm-marker:hover .fm-marker-caption,.fm-marker:focus-visible .fm-marker-caption,.fg-guide .fm-marker-caption { opacity:1; }
+.fm-completed { position:absolute; left:50%; bottom:8%; transform:translateX(-50%) rotate(-10deg); padding:.15cqw .35cqw; white-space:nowrap; font-size:1.3cqw; color:#fff1c5; background:#4e6541; border:1px solid #e8d39c; }
+.fm-progress { position:absolute; z-index:3; left:60%; bottom:3.2%; margin:0; color:#ffedc3; font-size:1.15cqw; letter-spacing:.12cqw; text-shadow:0 1px 4px #3a2616; pointer-events:none; animation:fm-fade-in 250ms 1050ms ease-out both; }
+.fg-guide .fm-marker,.fg-guide .fm-close { outline:1px dashed #ffe09a; outline-offset:3px; }
+@keyframes fm-background-in { from { opacity:0; } to { opacity:1; } }
+@keyframes fm-shade-in { from { opacity:0; } to { opacity:1; } }
+@keyframes fm-unroll { from { clip-path:inset(0 100% 0 0); opacity:.6; } to { clip-path:inset(0 0 0 0); opacity:1; } }
+@keyframes fm-paper-clear { from { opacity:1; } to { opacity:0; } }
+@keyframes fm-landscape-in { from { opacity:0; } to { opacity:1; } }
+@keyframes fm-landscape-layer { from { visibility:visible; } to { visibility:hidden; } }
+@keyframes fm-title-in { 0% { opacity:0; transform:translateX(25px) scaleY(.75); } 75% { opacity:1; transform:translateX(0) scaleY(1.04); } 100% { opacity:1; transform:translateX(0) scaleY(1); } }
+@keyframes fm-marker-in { 0% { opacity:0; transform:translateY(18px) scale(.72); } 65% { opacity:1; transform:translateY(-4px) scale(1.08); } 100% { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes fm-line-in { from { clip-path:inset(0 0 100% 0); } to { clip-path:inset(0 0 0 0); } }
+/* Opposite translations reveal the original pixels left-to-right without resizing
+   the bitmap, animating a mask, or letting idle drift override the entrance. */
+@keyframes fm-cloud-in { from { opacity:0; transform:translateX(-100%); } to { opacity:1; transform:translateX(0); } }
+@keyframes fm-cloud-counter { from { transform:translateX(100%); } to { transform:translateX(0); } }
+@keyframes fm-cloud-drift { 0%,100% { transform:translateX(0); } 50% { transform:translateX(8px); } }
+@keyframes fm-marker-idle { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-3px); } }
+@keyframes fm-fade-in { from { opacity:0; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .fm-map,.fm-map * { animation:none!important; transition:none!important; } }
+.fm-map[inert], .fm-map[inert] * { animation-play-state:paused!important; }
+.fm-map[data-ready='false'] :is(.fm-scroll,.fm-title,.fm-marker,.fm-cloud,.fm-progress) { visibility:hidden; }
+.fm-map[data-ready='false'] * { animation-play-state:paused!important; }
+.fm-map[data-ready='false'] .fm-background { animation:none; }
+.fm-loading { position:absolute; z-index:5; left:50%; top:50%; transform:translate(-50%,-50%); color:#ffedc3; padding:.8em 1.4em; background:#3b3026d9; border:1px solid #b99d68; font-size:clamp(14px,1.4cqw,24px); }

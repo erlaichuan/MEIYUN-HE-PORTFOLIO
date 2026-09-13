@@ -1,0 +1,15 @@
+.gc-cards { position:absolute; inset:0; overflow:hidden; isolation:isolate; animation:gc-enter .4s ease-out both; }
+.gc-background { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.gc-title,.gc-calligraphy { position:absolute; pointer-events:none; user-select:none; }
+.gc-calligraphy { mask-image:linear-gradient(to right,#000 0%,#000 93%,transparent 100%); }
+.fg-shell .gc-card,.fg-shell .gc-close { position:absolute; padding:0; border:0; background:transparent; z-index:2; }
+.gc-card>img { display:block; width:100%; height:100%; object-fit:contain; pointer-events:none; user-select:none; transition:transform .25s ease,filter .25s ease; }
+.gc-card:hover>img,.gc-card:focus-visible>img { transform:translateY(-.45cqw); filter:brightness(1.06) drop-shadow(0 .4cqw .35cqw #76551a44); }
+.gc-card:active>img { transform:translateY(-.15cqw); filter:brightness(.95); }
+.gc-reflection { position:absolute; overflow:hidden; pointer-events:none; opacity:.38; mask-image:linear-gradient(to bottom,#000 0%,#0009 55%,transparent 100%); }
+.gc-reflection img { display:block; width:100%; height:auto; transform:scaleY(-1); user-select:none; }
+.gc-close>svg { width:100%; height:100%; display:block; pointer-events:none; clip-path:circle(45% at 49% 50%); transition:transform .2s ease,filter .2s ease; }
+.gc-close:hover>svg { transform:scale(1.05) rotate(5deg); filter:brightness(1.07); }
+.fg-guide .gc-card,.fg-guide .gc-close { outline:1px dashed #a87821; outline-offset:3px; }
+@keyframes gc-enter { from { opacity:0; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .gc-cards,.gc-cards * { animation:none!important; transition:none!important; } }

@@ -1,0 +1,5 @@
+.fg-sfx-settings{border:1px solid #b69a69;padding:.6cqw 1cqw;margin:1cqw 0;color:inherit;font:inherit}
+.fg-sfx-settings legend{padding:0 .5cqw;font-size:1.25cqw}
+.fg-sfx-settings label{display:flex;align-items:center;justify-content:space-between;gap:1cqw;margin:.4cqw 0;font-size:1.3cqw}
+.fg-sfx-settings button{background:#e4cea5;border:1px solid #a8804e;padding:.2cqw 1.3cqw;min-width:3cqw}
+.fg-sfx-settings input{display:block;width:100%;accent-color:#963e2a;margin:.5cqw 0}

@@ -1,0 +1,23 @@
+.fa-atlas { position:absolute; inset:0; overflow:hidden; isolation:isolate; color:#95610f; animation:fa-enter .45s ease-out both; }
+.fg-stage:has(.fa-atlas) > .fg-background { display:none; }
+.fa-background,.fa-border { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; pointer-events:none; user-select:none; }
+.fa-border { z-index:1; }
+.fa-atlas .fa-title { position:absolute; z-index:2; margin:0; pointer-events:none; user-select:none; }
+.fa-title img { display:block; width:100%; height:100%; object-fit:contain; }
+.fa-gallery { position:absolute; inset:0; z-index:2; overflow:hidden; clip-path:inset(24% 8% 10% 7%); }
+.fg-shell .fa-chapter { position:absolute; padding:0; border:0; background:transparent; cursor:pointer; transform-origin:0 0; transition:transform .55s cubic-bezier(.22,.65,.3,1); }
+.fa-chapter-art { position:absolute; display:block; pointer-events:none; user-select:none; max-width:none; mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 99%); transition:filter .2s ease; }
+.fa-chapter:hover .fa-chapter-art { filter:brightness(1.045); }
+.fa-chapter:active .fa-chapter-art { filter:brightness(.95); }
+.fg-shell .fa-chapter:focus-visible { outline:2px solid #a65a22; outline-offset:3px; border-radius:2.5cqw; }
+.fg-shell .fa-control { position:absolute; z-index:4; padding:0; border:0; background:transparent; transition:transform .2s ease,filter .2s ease,opacity .2s ease; }
+.fa-control>img,.fa-control>svg { width:100%; height:100%; display:block; object-fit:contain; pointer-events:none; }
+.fg-shell .fa-control:hover:not(:disabled) { transform:translateY(-2px) scale(1.03); filter:brightness(1.06); }
+.fg-shell .fa-control:active:not(:disabled) { transform:scale(.96); }
+.fg-shell .fa-control:disabled { opacity:.4; cursor:default; }
+.fg-shell .fa-close:hover { transform:scale(1.04) rotate(3deg); }
+.fa-status { position:absolute; z-index:3; left:27%; width:24%; top:80%; margin:0; text-align:center; font-size:1.15cqw; color:#84451d; line-height:1.7; pointer-events:none; }
+.fa-status small { display:block; font-size:.9cqw; color:#987b47; }
+.fg-guide .fa-control,.fg-guide .fa-chapter { outline:1px dashed #a87821; outline-offset:2px; }
+@keyframes fa-enter { from { opacity:0; transform:scale(.985); } to { opacity:1; transform:scale(1); } }
+@media(prefers-reduced-motion:reduce) { .fa-atlas,.fa-atlas * { animation:none!important; transition:none!important; } }
